@@ -1,7 +1,7 @@
 import React from 'react'
 
 const NewsItem = (props) => {
-    let { title, description, imageUrl, newsUrl, author, date, source } = props;
+    let { title, description, imageUrl, newsUrl, sourceUrl, date, source } = props;
     let defaultImage = "https://fdn.gsmarena.com/imgroot/news/21/08/xiaomi-smart-home-india-annoucnements/-476x249w4/gsmarena_00.jpg";
 
     return (
@@ -24,7 +24,7 @@ const NewsItem = (props) => {
                 </div>
                 <div className="card-footer">
                     <p className="card-text">
-                        <small className="text-muted">By {!author ? "Unknown" : author} <br />
+                        <small className="text-muted">By {`${source} - ${sourceUrl}`} <br />
                         On  {new Date(date).toGMTString().slice(0, 25)}</small>
                     </p>
                     <a rel="noreferrer" href={newsUrl} target="_blank" className="btn btn-primary mt-2">
