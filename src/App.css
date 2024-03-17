@@ -36,3 +36,20 @@
     transform: rotate(360deg);
   }
 }
+
+.card {
+  border: 1px solid var(--bs-primary);
+  border-radius: 15px;
+  height: 520px;
+}
+
+.card-img-top {
+  height: 200px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.card-footer {
+  margin-bottom: 5px;
+}
+
