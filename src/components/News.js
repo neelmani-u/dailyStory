@@ -10,7 +10,6 @@ const delay = async (ms) => {
 };
 
 const News = (props) => {
-
     const [articles, setArticles] = useState([])
     const [loading, setLoading] = useState(true)
     const [page, setPage] = useState(1)
@@ -32,7 +31,8 @@ const News = (props) => {
         let parsedData = await data.json()
         props.setProgress(70);
         setArticles(parsedData.articles)
-        setTotalResults(parsedData.totalArticles)
+        // setTotalResults(parsedData.totalArticles)
+        setTotalResults(10)
         setLoading(false)
         props.setProgress(100);
     }
@@ -51,19 +51,25 @@ const News = (props) => {
         setPage(page + 1)
         let data = await fetch(url);
         let parsedData = await data.json()
-        setTotalResults(parsedData.totalArticles)
+        // setTotalResults(parsedData.totalArticles)
+        setTotalResults(10)
         setArticles(articles.concat(parsedData.articles))
     };
 
     return (
         <>
-            <h1 className="text-center" style={{ margin: '35px 0px', marginTop: '90px' }}>DailyDose - Top {capitalizeFirstLetter(props.category)} Headlines</h1>
+            <h1 className="text-center" style={{ margin: '35px 0px', marginTop: '90px' }}>dailyStory - Top {capitalizeFirstLetter(props.category)} Headlines</h1>
             {loading && <Spinner />}
             <InfiniteScroll
-                dataLength={articles.length}
+                dataLength={10}
                 next={fetchMoreData}
                 hasMore={articles.length !== totalResults}
                 loader={<Spinner />}
+                endMessage={
+                    <p style={{ textAlign: 'center' }}>
+                        <b>Yay! You have seen it all</b>
+                    </p>
+                }
             >
                 <div className="container">
 
@@ -94,4 +100,4 @@ News.propTypes = {
     category: PropTypes.string,
 }
 
-export default News
+export default News;
